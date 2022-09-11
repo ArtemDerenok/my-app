@@ -1,0 +1,11 @@
+@import '../../variables';
+
+input {
+  all: unset;
+  color: $white;
+  font-size: 20px;
+  
+    &::placeholder {
+      font-style: italic;
+    }
+}
