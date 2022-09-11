@@ -1,0 +1,18 @@
+@import '../../variables';
+
+.task {
+  color: $white;
+  display: flex;
+  align-items: center;
+  
+  .time {
+    background-color: $grey;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: $mainShadow;
+  }
+  
+  .message {
+    margin-left: 10px;
+  }
+}
