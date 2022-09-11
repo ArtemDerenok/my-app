@@ -1,6 +1,10 @@
+import Clock from "./Components/Clock/Clock";
+
 function App() {
   return (
-    <div />
+    <div>
+      <Clock />
+    </div>
   );
 }
 
