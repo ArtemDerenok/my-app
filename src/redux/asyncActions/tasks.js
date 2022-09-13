@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid'
-import clearTasks, { setTask } from '../../db'
-import { addTaskActionCreator, clearAllTasksActionCreator } from '../reducers/tasksReducer'
+import clearTasks, { getAllTasksFromDb, setTask } from '../../db'
+import { addTaskActionCreator, clearAllTasksActionCreator , setAllTasksActionCreator } from '../reducers/tasksReducer'
+
 
 const postTask = (data) => async (dispatch) => {
     const newTask = {...data, id: nanoid()}
@@ -13,5 +14,9 @@ export const deleteTasks = () => async (dispatch) => {
   dispatch(clearAllTasksActionCreator());
 }
   
+export const setAllTasks = () => async (dispatch) => {
+  const data = await getAllTasksFromDb();
+  dispatch(setAllTasksActionCreator(data));
+}
 
 export default postTask;
