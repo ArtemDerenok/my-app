@@ -7,8 +7,12 @@ function FormError({error}) {
   )
 }
 
+FormError.defaultProps = {
+  error: null,
+}
+
 FormError.propTypes = {
-  error: PropTypes.string.isRequired
+  error: PropTypes.string,
 }
 
 export default FormError;
