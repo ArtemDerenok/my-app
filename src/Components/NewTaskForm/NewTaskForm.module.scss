@@ -2,7 +2,7 @@
 
 
 .container {
-  color: $white;
+  color: $violetColor;
   
   .text {
     all: unset;
@@ -24,10 +24,16 @@
     button {
       all: unset;
       cursor: pointer;
+      color: $white;
       background-color: $grey;
       padding: 5px 10px 5px 10px;
       border-radius: 20px;
       margin-right: 5px;
+      
+      &:hover {
+        transform: scale(1.2, 1.2);
+        transition: 1s;
+      }
     }
   }
   

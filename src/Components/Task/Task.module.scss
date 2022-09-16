@@ -1,11 +1,11 @@
 @import '../../variables';
 
 .task {
-  color: $white;
   display: flex;
   align-items: center;
   
   .time {
+    color: $white;
     background-color: $grey;
     border-radius: 20px;
     padding: 5px;
@@ -13,6 +13,9 @@
   }
   
   .message {
+    color: $violetColor;
     margin-left: 10px;
+    max-width: 350px;
+    word-wrap: break-word;
   }
 }

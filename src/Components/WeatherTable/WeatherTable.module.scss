@@ -2,8 +2,83 @@
 
 .box {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   background-color: $grey;
   opacity: 90%;
   padding: 30px 0 30px 0;
+  
+  .otherDaysBox {
+    display: flex;
+    gap: 30px;
+  }
+  
+  .updateContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+      p {
+        font-size: 30px;
+        font-weight: 500;
+        color: $yellowColor;
+      }
+      button {
+        all: unset;
+        background-image: url('../../../public/icons/updated.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        
+        &:hover{
+          transform: scale(1.2, 1.2);
+          transition: 1s;
+        }
+      }
+  }
 }
+
+@media (max-width: 1163.99px) { 
+  
+}
+
+@media (max-width: 745.99px) { 
+  .box {
+    gap: 75px;
+    padding-left: 10px;
+    padding-right: 10px;
+    .otherDaysBox {
+      flex-direction: row;
+      max-height: 200px;
+      flex-wrap: wrap;
+      gap: 35px;
+    }
+  }
+}
+
+@media (max-width: 595.99px) { 
+  .box {
+    gap: 75px;
+    padding-left: 10px;
+    padding-right: 10px;
+    .otherDaysBox {
+      flex-direction: row;
+      max-height: 200px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+}
+
+@media (min-width: 373.99px) and (max-width: 570.99px) { 
+  .box {
+    flex-direction: column;
+    gap: 27px;
+    .otherDaysBox {
+      flex-direction: column;
+      align-items: center;
+      max-height: 215px;
+      gap: 5px;
+    }
+  }
+ }

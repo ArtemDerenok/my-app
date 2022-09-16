@@ -5,4 +5,30 @@
   flex-direction: column;
   gap: 20px;
   margin-bottom: 20px;
+  max-height: 400px;
+  overflow: auto;
+  
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  opacity: 100;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: $darkBlue; 
+}
+
+
+
+@media (max-width: 745.99px) { 
+  .list {
+    max-height: 250px;
+  }
 }

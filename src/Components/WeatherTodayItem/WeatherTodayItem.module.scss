@@ -29,3 +29,47 @@
         }
     }
 }
+
+@media (max-width: 1163.99px) { 
+  .box {
+    
+    img {
+      max-width: 60px;
+      max-height: 60px;
+    }
+    
+    div {
+        .degree {
+          font-size: 30px;
+        }
+    }
+  }
+}
+
+
+@media (max-width: 745.99px) { 
+  .box {
+    
+    img {
+      max-width: 35px;
+      max-height: 35px;
+    }
+    
+    div {
+        .degree {
+          font-size: 25px;
+        }
+    }
+  }
+}
+
+@media (min-width: 373.99px) and (max-width: 570.99px) { 
+  .box {
+    justify-content: center;
+    
+    div {
+       flex-direction: row;
+       gap: 5px;
+    }
+  }
+ }
