@@ -1,8 +1,7 @@
 import { useState,useEffect } from "react";
 import styles from './Clock.module.scss';
+import {days} from '../../utils/index';
 
-
-const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 function Clock() {
