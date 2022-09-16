@@ -21,5 +21,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'react/jsx-props-no-spreading': 'off',
+    "default-param-last": 'off',
   },
 };
