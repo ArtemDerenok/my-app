@@ -1,11 +1,24 @@
 import PropTypes from 'prop-types';
-import sunIcon from '../../assets/icons/sun.png'
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import styles from './WeatherTodayItem.module.scss';
+import { setBackgroundValueActionCreator } from "../../redux/reducers/backgroundReducer";
 
-function WeatherTodayItem({degree}) {
+function WeatherTodayItem({degree, description, weatherId}) {
+  let img = description;
+  const dispatch = useDispatch();
+  
+  if (weatherId >= 700 && weatherId < 800) {
+      img = 'Mist';
+  }
+  
+  useEffect(() => {
+    dispatch(setBackgroundValueActionCreator(img))
+  }, [])
+  
   return (
     <div className={styles.box}>
-      <img src={sunIcon} alt='sunny' />
+      <img src={`${process.env.PUBLIC_URL}/icons/${img}.png`} alt={img} />
       <div >
         <div className={styles.label}>today</div>
         <div className={styles.degree}>{degree}&deg;</div>
@@ -14,8 +27,14 @@ function WeatherTodayItem({degree}) {
   )
 }
 
+WeatherTodayItem.defaultProps = {
+  weatherId: null,
+}
+
 WeatherTodayItem.propTypes = {
-  degree: PropTypes.string.isRequired,
+  degree: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  weatherId: PropTypes.number,
 }
 
 export default WeatherTodayItem;
