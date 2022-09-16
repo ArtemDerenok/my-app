@@ -8,15 +8,16 @@ import createCache from "../db/cache";
 
 const OPEN_WEATHER_API_KEY = '648f53fe51358788a8efa96bcf72b550';
 
+
 const getMyOwnCityByIp = async () => {
-  const responce = await axios.get('http://ipwho.is/?fields=country,city,latitude,longitude');
+  const responce = await axios.get(`https://ipapi.co/json/`);
   return responce.data;
 }
 
 
 export const getCityCoordinates = async (city) => {
   try {
-    const response = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${OPEN_WEATHER_API_KEY}`)
+    const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${OPEN_WEATHER_API_KEY}`)
     
     const result = {
       city: response.data[0].name,
@@ -32,7 +33,7 @@ export const getCityCoordinates = async (city) => {
 }
 
 export const getWeatherDataFromOpenWeatherApi = async (city, api) => {
-  const request = new Request(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${OPEN_WEATHER_API_KEY}&units=metric`);
+  const request = new Request(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${OPEN_WEATHER_API_KEY}&units=metric`);
   const result = createCache(request, api);
   return result;
 }
