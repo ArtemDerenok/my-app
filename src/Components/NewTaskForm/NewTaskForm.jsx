@@ -27,7 +27,16 @@ function NewTaskForm() {
   
   return (
     <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
-      <input className={styles.time} placeholder='time' type='time' {...register('time', {required: 'Time is required'})} />
+      <input className={styles.time} type='text' placeholder='--:--'  {...register('time', {required: 'Time is required', minLength: {
+        value: 5,
+        message: 'Minimum 5 characters',
+      }, maxLength: {
+        value: 5,
+        message: 'Мaximum 5 characters'
+      }, pattern: {
+        value: /^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/,
+        message: 'Incorrect format'
+      }})} />
       <input className={styles.text} {...register('event', {required: 'Message is required', minLength: {
         value: 5,
         message: 'Minimum 10 characters',

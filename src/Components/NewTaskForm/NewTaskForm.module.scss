@@ -19,9 +19,9 @@
     border: 1px solid;
     border-radius: 10px;
     padding-left: 4px;
-    &::before {
-      content:'Time:';
-      margin-right: 5px;
+    max-width: 40px;
+    &::placeholder {
+      font-style: italic;
     }
   }
   
