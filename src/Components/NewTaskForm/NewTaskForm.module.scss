@@ -16,6 +16,13 @@
   .time {
     all: unset;
     margin-right: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    padding-left: 4px;
+    &::before {
+      content:'Time:';
+      margin-right: 5px;
+    }
   }
   
   div {
