@@ -15,11 +15,11 @@ function Clock() {
 
   return (
     <div className={styles.clock}>
-      <div className={styles.time}>{date.toLocaleTimeString()}</div>
+      <h2 className={styles.time}>{date.toLocaleTimeString()}</h2>
       <div>
-        <span className={styles.date}>
+        <h3 className={styles.date}>
           {days[date.getDay()]}, {date.getDate()} {months[date.getDate()]} {date.getFullYear()}
-        </span>
+        </h3>
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ function App() {
       className={styles.container}
       style={{ backgroundImage: `url(${setBackground(background)})` }}
     >
-      <div className={styles.boxOne}>
+      <section className={styles.boxOne}>
         <div className={styles.clockContainer}>
           <Clock />
           <NewTaskForm />
@@ -39,10 +39,10 @@ function App() {
             setCityName={setCityName}
           />
         </div>
-      </div>
-      <div>
+      </section>
+      <section>
         <WeatherTable handleRequest={handleRequest} cityName={cityName} />
-      </div>
+      </section>
       {weatherData.loading ? <Spinner /> : null}
     </main>
   );

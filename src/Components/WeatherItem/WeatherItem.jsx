@@ -11,9 +11,9 @@ function WeatherItem({ day, degree, description, weatherId }) {
 
   return (
     <div className={styles.item}>
-      <div className={styles.day}>{days[new Date(Date.parse(day)).getDay()]}</div>
+      <p className={styles.day}>{days[new Date(Date.parse(day)).getDay()]}</p>
       <img src={`${process.env.PUBLIC_URL}/icons/${img}.png`} alt={img} />
-      <div className={styles.degree}>{degree}&deg;</div>
+      <p className={styles.degree}>{degree}&deg;</p>
     </div>
   );
 }

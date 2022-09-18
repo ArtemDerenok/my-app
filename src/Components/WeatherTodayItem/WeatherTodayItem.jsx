@@ -20,8 +20,8 @@ function WeatherTodayItem({ degree, description, weatherId }) {
     <div className={styles.box}>
       <img src={`${process.env.PUBLIC_URL}/icons/${img}.png`} alt={img} />
       <div>
-        <div className={styles.label}>today</div>
-        <div className={styles.degree}>{degree}&deg;</div>
+        <p className={styles.label}>today</p>
+        <p className={styles.degree}>{degree}&deg;</p>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ function Task({ time, message }) {
   return (
     <div className={styles.task}>
       <div className={styles.time}>{time}</div>
-      <div className={styles.message}>{message}</div>
+      <p className={styles.message}>{message}</p>
     </div>
   );
 }
