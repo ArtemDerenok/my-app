@@ -1,10 +1,25 @@
-/* eslint-disable no-debugger */
-import { addCityOpenMeteoApi, addCityOpenWatherApi, setCurrentCityActionCreator, setWeatherDataOpenMeteoActionCreator, setWeatherDataOpenWeatherApiActionCreator } from '../reducers/weatherReducer';
-import getMyOwnCityByIp, { getCityCoordinates, getWeatherDataFromOpenMeteoApi } from "../../service/api";
-import {getAllWeatherDataOpenMeteoApiFromDb, getAllWeatherDataOpenWeatherApiFromDb, getCurrentCityFromDb, setCurrentCityInDb, setWatherDataOpenWeatherApiInDb , setWeatherDataOpenMeteoApiInDb } from "../../db/index";
-import { formatData } from '../../utils';
-
-
+import {
+  addCityOpenMeteoApi,
+  addCityOpenWatherApi,
+  setCurrentCityActionCreator,
+  setWeatherDataOpenMeteoActionCreator,
+  setWeatherDataOpenWeatherApiActionCreator
+} from '../reducers/weatherReducer';
+import getMyOwnCityByIp, {
+  getCityCoordinates,
+  getWeatherDataFromOpenMeteoApi
+} from "../../service/api";
+import {
+  getAllWeatherDataOpenMeteoApiFromDb,
+  getAllWeatherDataOpenWeatherApiFromDb,
+  getCurrentCityFromDb,
+  setCurrentCityInDb,
+  setWatherDataOpenWeatherApiInDb,
+  setWeatherDataOpenMeteoApiInDb
+} from "../../db/index";
+import {
+  formatData
+} from '../../utils';
 
 const setMyOwnCityThunk = () => async (dispatch) => {
   const data = await getMyOwnCityByIp();
@@ -27,7 +42,7 @@ export const setWeatherDataOpenWeatherApiFromDbThunk = () => async (dispatch) =>
   if (data.length) {
     const result = formatData(data);
     return dispatch(setWeatherDataOpenWeatherApiActionCreator(result));
-  } 
+  }
   return null;
 }
 
@@ -42,10 +57,10 @@ export const setWeatherDataOpenMeteoApiFromDbThunk = () => async (dispatch) => {
 
 export const setCurrentCityFromDbThunk = () => async (dispatch) => {
   const data = await getCurrentCityFromDb('settings');
-  if(data) {
+  if (data) {
     return dispatch(setCurrentCityActionCreator(data));
-  } 
-    return null;
+  }
+  return null;
 }
 
 export const getCoordinatesThunk = (data) => async (dispatch) => {
@@ -58,7 +73,6 @@ export const getCoordinatesThunk = (data) => async (dispatch) => {
 }
 
 export const getWeatherDataOpenMeteoThunk = (data, api) => async (dispatch) => {
-  debugger
   try {
     const result = await getWeatherDataFromOpenMeteoApi(data, api);
     await setWeatherDataOpenMeteoApiInDb(result.city.city, result);

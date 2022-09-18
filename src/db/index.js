@@ -1,5 +1,6 @@
-/* eslint-disable no-debugger */
-import { openDB } from 'idb';
+import {
+  openDB
+} from 'idb';
 
 const dbPromise = openDB('weather-app-store', 1, {
   upgrade(db) {
@@ -22,10 +23,7 @@ export const setWatherDataOpenWeatherApiInDb = async (key, val) => (await dbProm
 
 export const setWeatherDataOpenMeteoApiInDb = async (key, val) => (await dbPromise).put('openMeteo', val, key.toLowerCase())
 
-export const getWeatherDataOpenWeatherApiFromDb = async (key) => {
-  debugger
-  return (await dbPromise).get('openWeatherApi', key.toLowerCase())
-};
+export const getWeatherDataOpenWeatherApiFromDb = async (key) => (await dbPromise).get('openWeatherApi', key.toLowerCase());
 
 export const getWeatherDataOpenMeteoApiFromDb = async (key) => (await dbPromise).get('openMeteo', key.toLowerCase())
 

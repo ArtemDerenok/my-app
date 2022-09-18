@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 const filterWeatherData = (arr) => {
   const copyArr = arr;
   const result = copyArr.filter((elem, index) => {
@@ -11,16 +10,15 @@ const filterWeatherData = (arr) => {
 
 export const formatData = (arr) => {
   const result = {};
-  
+
   arr.forEach((elem) => {
     result[elem.city.city.toLowerCase()] = elem;
   })
-  
+
   return result;
 }
 
 export const compareTime = (currentTime, oldTime) => {
-  debugger
   const ms = currentTime - oldTime
   const hours = Math.floor((ms / (1000 * 60 * 60)))
   return hours >= 1;
@@ -28,8 +26,12 @@ export const compareTime = (currentTime, oldTime) => {
 
 export const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
+export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 export const regionNames = new Intl.DisplayNames(
-  ['en'], {type: 'region'}
+  ['en'], {
+    type: 'region'
+  }
 );
 
 export const prepareData = (data) => {
@@ -56,12 +58,11 @@ export const filterWeatherDataOpenMeteo = (arr1, arr2, arr3) => {
     }
     result.push(obj);
   }
-  
+
   return result;
 }
 
 export const prepareDataForOpenMeteoApi = (weatherData, cityData) => {
-  debugger
   const result = {
     city: {
       city: cityData.city,
@@ -75,10 +76,9 @@ export const prepareDataForOpenMeteoApi = (weatherData, cityData) => {
   return result;
 }
 
-
 export const getWeatherDescription = (num) => {
   let str = '';
-  
+
   if (num === 0) {
     str = 'Clear';
   } else if (num > 0 && num < 45) {
@@ -98,7 +98,7 @@ export const getWeatherDescription = (num) => {
   } else if (num >= 95) {
     str = 'Thunderstorm';
   }
-  
+
   return str;
 }
 

@@ -1,18 +1,17 @@
 @import '../../variables';
 
-
 .container {
   color: $violetColor;
-  
+
   .text {
     all: unset;
     font-size: 20px;
-    
-      &::placeholder {
-        font-style: italic;
-      }
+
+    &::placeholder {
+      font-style: italic;
+    }
   }
-  
+
   .time {
     all: unset;
     margin-right: 10px;
@@ -24,10 +23,10 @@
       font-style: italic;
     }
   }
-  
+
   div {
     margin-top: 5px;
-    
+
     button {
       all: unset;
       cursor: pointer;
@@ -36,12 +35,11 @@
       padding: 5px 10px 5px 10px;
       border-radius: 20px;
       margin-right: 5px;
-      
+
       &:hover {
         transform: scale(1.2, 1.2);
         transition: 1s;
       }
     }
   }
-  
 }

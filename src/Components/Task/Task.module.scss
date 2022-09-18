@@ -3,7 +3,7 @@
 .task {
   display: flex;
   align-items: center;
-  
+
   .time {
     color: $white;
     background-color: $grey;
@@ -11,7 +11,7 @@
     padding: 5px;
     box-shadow: $mainShadow;
   }
-  
+
   .message {
     color: $violetColor;
     margin-left: 10px;

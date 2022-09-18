@@ -6,49 +6,47 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  
-    .day {
-      background-color: $darkBlue;
-      border-radius: 20px;
-      padding: 5px;
-      box-shadow: $mainShadow;
-    }
-    
-    img {
-      max-width: 100px;
-      max-height: 100px;
-    }
-    
-    .degree {
-      font-size: 30px;
-    }
-}
 
-@media (max-width: 1163.99px) { 
-  .item {
-      img {
-        max-width: 50px;
-        max-height: 50px;
-      }
-      
-      .degree {
-        font-size: 20px;
-      }
+  .day {
+    background-color: $darkBlue;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: $mainShadow;
+  }
+
+  img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .degree {
+    font-size: 30px;
   }
 }
 
-@media (max-width: 745.99px) { 
+@media (max-width: 1163.99px) {
+  .item {
+    img {
+      max-width: 50px;
+      max-height: 50px;
+    }
+
+    .degree {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 745.99px) {
   .item {
     flex-direction: row;
-      img {
-        max-width: 30px;
-        max-height: 30px;
-      }
-      
-      .degree {
-        font-size: 15px;
-      }
+    img {
+      max-width: 30px;
+      max-height: 30px;
+    }
+
+    .degree {
+      font-size: 15px;
+    }
   }
 }
-
-

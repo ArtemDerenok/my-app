@@ -1,6 +1,12 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {
+  createStore,
+  combineReducers,
+  applyMiddleware
+} from 'redux';
 import thunk from 'redux-thunk'
-import { composeWithDevTools } from 'redux-devtools-extension';
+import {
+  composeWithDevTools
+} from 'redux-devtools-extension';
 import taskReducer from '../reducers/tasksReducer';
 import weatherReducer from '../reducers/weatherReducer';
 import backgroundReducer from '../reducers/backgroundReducer';

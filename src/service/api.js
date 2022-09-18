@@ -1,24 +1,19 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-debugger */
 import axios from 'axios';
-import { compareTime, prepareData, regionNames , prepareDataForOpenMeteoApi } from '../utils';
-import { getWeatherDataOpenWeatherApiFromDb } from "../db/index";
+import {
+  regionNames
+} from '../utils';
 import createCache from "../db/cache";
 
-
 const OPEN_WEATHER_API_KEY = '648f53fe51358788a8efa96bcf72b550';
-
 
 const getMyOwnCityByIp = async () => {
   const responce = await axios.get(`https://ipapi.co/json/`);
   return responce.data;
 }
 
-
 export const getCityCoordinates = async (city) => {
   try {
     const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${OPEN_WEATHER_API_KEY}`)
-    debugger
     const result = {
       city: response.data[0].name,
       country: regionNames.of(response.data[0].country),

@@ -31,6 +31,16 @@
     "lint": "eslint src",
     "lintFix": "eslint src --fix"
   },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "tabWidth": 2,
+    "semi": true,
+    "arrowParens": "always"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

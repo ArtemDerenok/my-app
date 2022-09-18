@@ -5,18 +5,20 @@ import Task from '../Task/Task';
 import styles from './ToDoList.module.scss';
 
 function ToDoList() {
-  const tasks = useSelector(state => state.taskReducer.tasks);
+  const tasks = useSelector((state) => state.taskReducer.tasks);
   const dispatch = useDispatch();
- 
+
   useLayoutEffect(() => {
     dispatch(setAllTasks());
-  }, [])
-  
+  }, []);
+
   return (
     <div className={styles.list}>
-      {tasks.map((elem) => <Task key={elem.id} time={elem.time} message={elem.message} />)}
+      {tasks.map((elem) => (
+        <Task key={elem.id} time={elem.time} message={elem.message} />
+      ))}
     </div>
-  )
+  );
 }
 
 export default ToDoList;
