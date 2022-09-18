@@ -14,9 +14,12 @@ function ToDoList() {
 
   return (
     <div className={styles.list}>
-      {tasks.map((elem) => (
-        <Task key={elem.id} time={elem.time} message={elem.message} />
-      ))}
+      {tasks.map((elem) => {
+        if (elem.date === new Date().toLocaleDateString()) {
+          return <Task key={elem.id} time={elem.time} message={elem.message} />;
+        }
+        return null;
+      })}
     </div>
   );
 }
