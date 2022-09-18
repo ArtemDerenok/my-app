@@ -19,7 +19,7 @@ function CityBar({handleRequest, cityName, countryName, errorMessage, setCityNam
       <FormError error={errorMessage} />
       <div className={styles.selectBox}>
         <CitySelector handleRequest={handleRequest} />
-        <ApiSelector />
+        <ApiSelector handleRequest={handleRequest} />
       </div>
     </div>
   )

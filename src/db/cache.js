@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import { compareTime, prepareData, prepareDataForOpenMeteoApi } from "../utils/index";
 import { getWeatherDataOpenMeteoApiFromDb, getWeatherDataOpenWeatherApiFromDb } from './index';
 
@@ -16,15 +17,24 @@ const createCache = async (request, api, cityData = undefined) => {
     }
   } else {
     const data = await responce.json()
-    let result = api === 'openWeatherApi' ? await getWeatherDataOpenWeatherApiFromDb(data.city.name) : await getWeatherDataOpenMeteoApiFromDb(cityData.city);
+    let result;
+       
+  
+    if (api === 'openWeatherApi') {
+      result = await getWeatherDataOpenWeatherApiFromDb(data.city.name)
+    } else if (api === 'openMeteo') {
+      result = await getWeatherDataOpenMeteoApiFromDb(cityData.city);
+    }
     
-    
+    debugger
     let isCleanCash = false;
     if (result) {
       isCleanCash = compareTime(Date.now(), result.timestamp);
-    } else {
-      result = api === 'openWeatherApi' ? prepareData(data) : prepareDataForOpenMeteoApi(data, cityData);
-    }
+    } else if (api === 'openWeatherApi') {
+      result = prepareData(data)
+     } else if (api === 'openMeteo') {
+       result = prepareDataForOpenMeteoApi(data, cityData)
+     }
     
     if (isCleanCash) {
       try {
@@ -32,7 +42,14 @@ const createCache = async (request, api, cityData = undefined) => {
         await cache.add(request)
         const res = await cache.match(request);
         const dataObj = await res.json();
-        const resultObj = api === 'openWeatherApi' ? prepareData(dataObj) : prepareDataForOpenMeteoApi(dataObj, cityData)
+        let resultObj;
+        
+        if (api === 'openWeatherApi') {
+         resultObj = prepareData(dataObj)
+        } else if (api === 'openMeteo') {
+          resultObj = prepareDataForOpenMeteoApi(dataObj, cityData)
+        }
+        
         return resultObj;
       } catch (error) {
         throw new Error('Something went wrong. Try a different city name');

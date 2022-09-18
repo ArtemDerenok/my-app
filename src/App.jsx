@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Clock from "./Components/Clock/Clock";
@@ -24,9 +25,10 @@ function App() {
   const background = useSelector(state => state.backgroundReducer.background)
   const dispatch = useDispatch();
     
-  const handleRequestOpenWeatherApi = async (name) => {
+  const handleRequestOpenWeatherApi = async (name, api) => {
+    debugger
     try {
-      const result = await getWeatherDataFromOpenWeatherApi(name.toLowerCase(), weatherData.currentApi);
+      const result = await getWeatherDataFromOpenWeatherApi(name.toLowerCase(), api);
       setCityName(result.city.city);
       setCountryName(result.city.country)
       dispatch(setCurrentCityTnunk(result.city));
@@ -39,18 +41,18 @@ function App() {
     }
   }
   
-  const handleRequestOpenMeteoApi = async (data) => {
-    const result = await dispatch(getWeatherDataOpenMeteoThunk(data, weatherData.currentApi));
+  const handleRequestOpenMeteoApi = async (data, api) => {
+    const result = await dispatch(getWeatherDataOpenMeteoThunk(data, api));
     await setCurrentCityInDb('settings', result.payload.city)
   }
   
-  const getCoordinadtesOpenMeteoApi = async (name) => {
+  const getCoordinadtesOpenMeteoApi = async (name, api) => {
     try {
       const result = await dispatch(getCoordinatesThunk(name));
       setCityName(result.payload.city);
       setCountryName(result.payload.country)
       setErrorMessage(null);
-      handleRequestOpenMeteoApi(result.payload);
+      await handleRequestOpenMeteoApi(result.payload, api);
     } catch (error) {
       setErrorMessage(error.message)
     } finally {
@@ -59,11 +61,12 @@ function App() {
   }
   
   const handleRequest = async (name, api) => {
+    debugger
     dispatch(setLoadingValueActionCreator(true))
     if (api === 'openWeatherApi') {
-      handleRequestOpenWeatherApi(name);
+      handleRequestOpenWeatherApi(name, api);
     } else if (api === 'openMeteo') {
-        await getCoordinadtesOpenMeteoApi(name);
+        await getCoordinadtesOpenMeteoApi(name, api);
     }
   }
   

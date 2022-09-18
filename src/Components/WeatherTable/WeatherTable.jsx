@@ -18,8 +18,10 @@ function WeatherTable({handleRequest, cityName}) {
         content = data.openWeatherApi[data.currentCity.city.toLowerCase()].list.map((elem, index) => {
           if (index === 0) {
             firstElement.push(<WeatherTodayItem key={nanoid()} degree={elem.main.temp} description={elem.weather[0].main} weatherId={elem.weather[0].id} />)
+          } else {
+            return <WeatherItem key={nanoid()} day={elem.dt_txt.slice(0, 10)} degree={elem.main.temp} description={elem.weather[0].main} weatherId={elem.weather[0].id} />
           }
-          return <WeatherItem key={nanoid()} day={elem.dt_txt.slice(0, 10)} degree={elem.main.temp} description={elem.weather[0].main} weatherId={elem.weather[0].id} />
+          return null;
         })
       }
     }
@@ -29,8 +31,10 @@ function WeatherTable({handleRequest, cityName}) {
         content = data.openMeteo[data.currentCity.city.toLowerCase()].list.map((elem, index) => {
           if (index === 0) {
             firstElement.push(<WeatherTodayItem key={nanoid()} degree={elem.temp} description={getWeatherDescription(elem.weathercode)} />)
+          } else {
+            return <WeatherItem key={nanoid()} day={elem.day} degree={elem.temp} description={getWeatherDescription(elem.weathercode)} />
           }
-          return <WeatherItem key={nanoid()} day={elem.day} degree={elem.temp} description={getWeatherDescription(elem.weathercode)} />
+          return null;
         })
       }
     }

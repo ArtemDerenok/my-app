@@ -18,14 +18,13 @@ const getMyOwnCityByIp = async () => {
 export const getCityCoordinates = async (city) => {
   try {
     const response = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${OPEN_WEATHER_API_KEY}`)
-    
+    debugger
     const result = {
       city: response.data[0].name,
       country: regionNames.of(response.data[0].country),
       latitude: response.data[0].lat,
       longitude: response.data[0].lon
     };
-
     return result
   } catch (error) {
     throw new Error('Something went wrong. Try a different city name or another API');

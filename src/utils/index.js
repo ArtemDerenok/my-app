@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 const filterWeatherData = (arr) => {
   const copyArr = arr;
   const result = copyArr.filter((elem, index) => {
@@ -19,7 +20,9 @@ export const formatData = (arr) => {
 }
 
 export const compareTime = (currentTime, oldTime) => {
-  const hours = Math.floor((currentTime / (1000 * 60 * 60)) % 24) - Math.floor((oldTime / (1000 * 60 * 60)) % 24);
+  debugger
+  const ms = currentTime - oldTime
+  const hours = Math.floor((ms / (1000 * 60 * 60)))
   return hours >= 1;
 }
 
@@ -58,6 +61,7 @@ export const filterWeatherDataOpenMeteo = (arr1, arr2, arr3) => {
 }
 
 export const prepareDataForOpenMeteoApi = (weatherData, cityData) => {
+  debugger
   const result = {
     city: {
       city: cityData.city,

@@ -1,14 +1,17 @@
+/* eslint-disable no-debugger */
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { setCurrentApiActionCreator } from '../../redux/reducers/weatherReducer';
 import styles from './ApiSelector.module.scss';
 
-function ApiSelector() {
+function ApiSelector({handleRequest}) {
   const data = useSelector(state => state.weatherReducer);
   const dispatch = useDispatch();
   
-  const handleOptions = (e) => {
+  const handleOptions = async (e) => {
     localStorage.setItem('api', e.target.value);
-    dispatch(setCurrentApiActionCreator(e.target.value));
+    await dispatch(setCurrentApiActionCreator(e.target.value));
+    handleRequest(data.currentCity.city, e.target.value)
   }
   
   return (
@@ -18,6 +21,10 @@ function ApiSelector() {
       <option value={data.api.openMeteo}>Open-meteo</option>
     </select>
   )
+}
+
+ApiSelector.propTypes = {
+  handleRequest: PropTypes.func.isRequired,
 }
 
 export default ApiSelector;

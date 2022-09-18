@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import { addCityOpenMeteoApi, addCityOpenWatherApi, setCurrentCityActionCreator, setWeatherDataOpenMeteoActionCreator, setWeatherDataOpenWeatherApiActionCreator } from '../reducers/weatherReducer';
 import getMyOwnCityByIp, { getCityCoordinates, getWeatherDataFromOpenMeteoApi } from "../../service/api";
 import {getAllWeatherDataOpenMeteoApiFromDb, getAllWeatherDataOpenWeatherApiFromDb, getCurrentCityFromDb, setCurrentCityInDb, setWatherDataOpenWeatherApiInDb , setWeatherDataOpenMeteoApiInDb } from "../../db/index";
@@ -57,6 +58,7 @@ export const getCoordinatesThunk = (data) => async (dispatch) => {
 }
 
 export const getWeatherDataOpenMeteoThunk = (data, api) => async (dispatch) => {
+  debugger
   try {
     const result = await getWeatherDataFromOpenMeteoApi(data, api);
     await setWeatherDataOpenMeteoApiInDb(result.city.city, result);
