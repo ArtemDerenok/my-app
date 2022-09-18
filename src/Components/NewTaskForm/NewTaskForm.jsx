@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import postTask, { deleteTasks } from '../../redux/asyncActions/tasks';
+import postTaskThunk, { deleteTasksThunk } from '../../redux/asyncActions/tasks';
 import FormError from '../FormError/FormError';
 import styles from './NewTaskForm.module.scss';
 
@@ -14,12 +14,16 @@ function NewTaskForm() {
   const dispatch = useDispatch();
 
   const clearAllTasks = () => {
-    dispatch(deleteTasks());
+    dispatch(deleteTasksThunk());
   };
 
   const onSubmit = (data) => {
     dispatch(
-      postTask({ time: data.time, message: data.event, date: new Date().toLocaleDateString() }),
+      postTaskThunk({
+        time: data.time,
+        message: data.event,
+        date: new Date().toLocaleDateString(),
+      }),
     );
   };
 

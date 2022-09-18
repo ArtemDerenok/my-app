@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setAllTasks } from '../../redux/asyncActions/tasks';
+import { setAllTasksThunk } from '../../redux/asyncActions/tasks';
 import Task from '../Task/Task';
 import styles from './ToDoList.module.scss';
 
@@ -9,7 +9,7 @@ function ToDoList() {
   const dispatch = useDispatch();
 
   useLayoutEffect(() => {
-    dispatch(setAllTasks());
+    dispatch(setAllTasksThunk());
   }, []);
 
   return (

@@ -12,7 +12,7 @@ import {
 } from '../reducers/tasksReducer'
 
 
-const postTask = (data) => async (dispatch) => {
+const postTaskThunk = (data) => async (dispatch) => {
   const newTask = {
     ...data,
     id: nanoid()
@@ -21,14 +21,14 @@ const postTask = (data) => async (dispatch) => {
   dispatch(addTaskActionCreator(newTask))
 }
 
-export const deleteTasks = () => async (dispatch) => {
+export const deleteTasksThunk = () => async (dispatch) => {
   await clearTasks();
   dispatch(clearAllTasksActionCreator());
 }
 
-export const setAllTasks = () => async (dispatch) => {
+export const setAllTasksThunk = () => async (dispatch) => {
   const data = await getAllTasksFromDb();
   dispatch(setAllTasksActionCreator(data));
 }
 
-export default postTask;
+export default postTaskThunk;
