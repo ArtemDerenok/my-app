@@ -77,7 +77,7 @@ function WeatherTable({ handleRequest, cityName }) {
   }
 
   return (
-    <div className={styles.box}>
+    <div className={styles.container}>
       {firstElement}
       <div className={styles.otherDaysBox}>{content}</div>
     </div>

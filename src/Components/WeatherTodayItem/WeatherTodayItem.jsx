@@ -17,7 +17,7 @@ function WeatherTodayItem({ degree, description, weatherId }) {
   }, []);
 
   return (
-    <div className={styles.box}>
+    <div className={styles.container}>
       <img src={`${process.env.PUBLIC_URL}/icons/${img}.png`} alt={img} />
       <div>
         <p className={styles.label}>today</p>
