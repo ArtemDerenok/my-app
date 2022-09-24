@@ -85,15 +85,12 @@ const useWeather = () => {
       let result = await dispatch(setCurrentCityFromDbThunk());
       if (!result) {
         result = await dispatch(setMyOwnCityThunk());
-        handleRequest(result.payload.city, weatherData.currentApi);
       }
       setCityName(result.payload.city);
       setCountryName(result.payload.country);
-      const resultOne = await dispatch(setWeatherDataOpenMeteoApiFromDbThunk());
-      const resultTwo = await dispatch(setWeatherDataOpenWeatherApiFromDbThunk());
-      if (resultOne === null || resultTwo === null) {
-        handleRequest(result.payload.city, weatherData.currentApi);
-      }
+      dispatch(setWeatherDataOpenMeteoApiFromDbThunk());
+      dispatch(setWeatherDataOpenWeatherApiFromDbThunk());
+      handleRequest(result.payload.city, weatherData.currentApi);
     }
     fetchData();
   }, [])
