@@ -7,7 +7,8 @@ import {
 } from '../reducers/weatherReducer';
 import getMyOwnCityByIp, {
   getCityCoordinates,
-  getWeatherDataFromOpenMeteoApi
+  getWeatherDataFromOpenMeteoApi,
+  getWeatherDataFromOpenWeatherApi
 } from "../../service/api";
 import {
   getAllWeatherDataOpenMeteoApiFromDb,
@@ -79,6 +80,16 @@ export const getWeatherDataOpenMeteoThunk = (data, api) => async (dispatch) => {
     return dispatch(addCityOpenMeteoApi(result));
   } catch (error) {
     throw new Error(error.message);
+  }
+}
+
+export const getWeatherDataOpenWeatherDataApiThunk = (name, api) => async (dispatch) => {
+  try {
+    const result = await getWeatherDataFromOpenWeatherApi(name.toLowerCase(), api);
+    await setWatherDataOpenWeatherApiInDb(result.city.city, result);
+    return dispatch(addCityOpenWatherApi(result))
+  } catch (error) {
+    throw new Error(error.message)
   }
 }
 

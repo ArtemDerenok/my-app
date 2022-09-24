@@ -8,16 +8,13 @@ import {
 } from "react-redux";
 import setMyOwnCityThunk, {
   setCurrentCityTnunk,
-  addCityDataOpenWeatherApiThunk,
   getWeatherDataOpenMeteoThunk,
   getCoordinatesThunk,
   setCurrentCityFromDbThunk,
   setWeatherDataOpenMeteoApiFromDbThunk,
-  setWeatherDataOpenWeatherApiFromDbThunk
+  setWeatherDataOpenWeatherApiFromDbThunk,
+  getWeatherDataOpenWeatherDataApiThunk
 } from "../redux/asyncActions/weather";
-import {
-  getWeatherDataFromOpenWeatherApi
-} from "../service/api";
 import {
   setLoadingValueActionCreator
 } from "../redux/reducers/weatherReducer";
@@ -39,11 +36,10 @@ const useWeather = () => {
 
   const handleRequestOpenWeatherApi = async (name, api) => {
     try {
-      const result = await getWeatherDataFromOpenWeatherApi(name.toLowerCase(), api);
-      setCityName(result.city.city);
-      setCountryName(result.city.country)
-      dispatch(setCurrentCityTnunk(result.city));
-      dispatch(addCityDataOpenWeatherApiThunk(result));
+      const result = await dispatch(getWeatherDataOpenWeatherDataApiThunk(name, api));
+      setCityName(result.payload.city.city);
+      setCountryName(result.payload.city.country)
+      dispatch(setCurrentCityTnunk(result.payload.city));
       setErrorMessage(null);
     } catch (error) {
       setErrorMessage(error.message);
